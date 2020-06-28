@@ -1,36 +1,36 @@
 $defaultaccountname = 'defaultaccountname'
-$accountname = Read-Host "ƒXƒgƒŒ[ƒWƒAƒJƒEƒ“ƒg–¼[ƒfƒtƒHƒ‹ƒg’lF$($defaultaccountname)]"
+$accountname = Read-Host "ã‚¹ãƒˆãƒ¬ãƒ¼ã‚¸ã‚¢ã‚«ã‚¦ãƒ³ãƒˆå[ãƒ‡ãƒ•ã‚©ãƒ«ãƒˆå€¤ï¼š$($defaultaccountname)]"
 $accountname = ($defaultaccountname,$accountname)[[bool]$accountname]
 
 $defaultcontainername = '$web'
-$containername = Read-Host "ƒRƒ“ƒeƒi–¼[ƒfƒtƒHƒ‹ƒg’lF$($defaultcontainername)]"
+$containername = Read-Host "ã‚³ãƒ³ãƒ†ãƒŠå[ãƒ‡ãƒ•ã‚©ãƒ«ãƒˆå€¤ï¼š$($defaultcontainername)]"
 $containername = ($defaultcontainername,$containername)[[bool]$containername]
 
 $defaultdestinationpath = '/images/'
-$destinationpath = Read-Host "ƒAƒbƒvƒ[ƒhæ‚ÌƒpƒX[ƒfƒtƒHƒ‹ƒg’lF$($defaultdestinationpath)]"
+$destinationpath = Read-Host "ã‚¢ãƒƒãƒ—ãƒ­ãƒ¼ãƒ‰å…ˆã®ãƒ‘ã‚¹[ãƒ‡ãƒ•ã‚©ãƒ«ãƒˆå€¤ï¼š$($defaultdestinationpath)]"
 $destinationpath = ($defaultdestinationpath,$destinationpath)[[bool]$destinationpath]
 
-$sourcepath = Read-Host "ƒAƒbƒvƒ[ƒhŒ³‚ÌƒtƒHƒ‹ƒ_[ƒpƒX"
+$sourcepath = Read-Host "ã‚¢ãƒƒãƒ—ãƒ­ãƒ¼ãƒ‰å…ƒã®ãƒ•ã‚©ãƒ«ãƒ€ãƒ¼ãƒ‘ã‚¹"
 
 $date = (Get-Date -F G).Replace('/','').Replace(' ','_').Replace(':','');
 $destbefore = $date + "_before_upload_list.txt"
 $destafter = $date + "_after_upload_list.txt"
 
-$output1 = az storage blob list  --account-name $accountname --container-name $containername --output table --prefix $destinationpath > $destbefore
+az storage blob list  --account-name $accountname --container-name $containername --output table --prefix $destinationpath > $destbefore
 if (!$?) {
-    Write-Error "ƒƒO‚ÌŽæ“¾‚ÉŽ¸”s‚µ‚Ü‚µ‚½Bƒpƒ‰ƒ[ƒ^‚ðŠm”F‚µ‚Ä‚­‚¾‚³‚¢B"
+    Write-Error "ãƒ­ã‚°ã®å–å¾—ã«å¤±æ•—ã—ã¾ã—ãŸã€‚ãƒ‘ãƒ©ãƒ¡ãƒ¼ã‚¿ã‚’ç¢ºèªã—ã¦ãã ã•ã„ã€‚"
     exit 2
 }
 
-$output2 = az storage blob upload-batch --account-name $accountname -d $containername --destination-path $destinationpath -s $sourcepath 
+az storage blob upload-batch --account-name $accountname -d $containername --destination-path $destinationpath -s $sourcepath 
 if (!$?) {
-    Write-Error "ƒtƒ@ƒCƒ‹‚ÌƒAƒbƒvƒ[ƒh‚ÉŽ¸”s‚µ‚Ü‚µ‚½Bƒpƒ‰ƒ[ƒ^‚ðŠm”F‚µ‚Ä‚­‚¾‚³‚¢B"
+    Write-Error "ãƒ•ã‚¡ã‚¤ãƒ«ã®ã‚¢ãƒƒãƒ—ãƒ­ãƒ¼ãƒ‰ã«å¤±æ•—ã—ã¾ã—ãŸã€‚ãƒ‘ãƒ©ãƒ¡ãƒ¼ã‚¿ã‚’ç¢ºèªã—ã¦ãã ã•ã„ã€‚"
     exit 2
 }
 
-$output3 = az storage blob list  --account-name $accountname --container-name $containername --output table --prefix $destinationpath > $destafter
+az storage blob list  --account-name $accountname --container-name $containername --output table --prefix $destinationpath > $destafter
 if (!$?) {
-    Write-Error "ƒƒO‚ÌŽæ“¾‚ÉŽ¸”s‚µ‚Ü‚µ‚½Bƒpƒ‰ƒ[ƒ^‚ðŠm”F‚µ‚Ä‚­‚¾‚³‚¢B"
+    Write-Error "ãƒ­ã‚°ã®å–å¾—ã«å¤±æ•—ã—ã¾ã—ãŸã€‚ãƒ‘ãƒ©ãƒ¡ãƒ¼ã‚¿ã‚’ç¢ºèªã—ã¦ãã ã•ã„ã€‚"
     exit 2
 }else{
 	exit 0
