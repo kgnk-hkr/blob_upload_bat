@@ -1,8 +1,8 @@
 :::::::::::::::::::::::::::::::::::::::::::::::::::::::::::
-::	ƒfƒoƒCƒX‰æ‘œƒAƒbƒvƒ[ƒhƒoƒbƒ`                       ::
+::	ãƒ‡ãƒã‚¤ã‚¹ç”»åƒã‚¢ãƒƒãƒ—ãƒ­ãƒ¼ãƒ‰ãƒãƒƒãƒ                       ::
 :::::::::::::::::::::::::::::::::::::::::::::::::::::::::::
-::•ÏX—š—ð
-::1.0 ‰”Å
+::å¤‰æ›´å±¥æ­´
+::1.0 åˆç‰ˆ
 ::
 
 @echo off
@@ -14,33 +14,33 @@ set hh=%time2:~0,2%
 set mn=%time2:~3,2%
 set ss=%time2:~6,2%
 
-:: ID¶¬
+:: IDç”Ÿæˆ
 set id=%date:/=%-%hh%%mn%%ss%
 
-SET BAT_LOG=%~dp0\%id%_ƒXƒNƒŠƒvƒgŽÀsŒ‹‰Ê.txt
+SET BAT_LOG=%~dp0\%id%_ã‚¹ã‚¯ãƒªãƒ—ãƒˆå®Ÿè¡Œçµæžœ.txt
 
-echo "Azure‚Ö‚ÌƒƒOƒCƒ“î•ñ‚ð“ü—Í‚µ‚Ä‚­‚¾‚³‚¢"
+echo "Azureã¸ã®ãƒ­ã‚°ã‚¤ãƒ³æƒ…å ±ã‚’å…¥åŠ›ã—ã¦ãã ã•ã„"
 PowerShell -File %~dp0\login.ps1 >> %BAT_LOG%
 ::powershell -command %~dp0\login.ps1;exit $LASTEXITCODE >> %BAT_LOG%
 @IF %ERRORLEVEL% NEQ 0 (
-echo "AzureƒAƒJƒEƒ“ƒg‚Ö‚ÌƒƒOƒCƒ“‚ÉŽ¸”s‚µ‚Ü‚µ‚½B“ü—Í’l‚ðŠm”F‚µ‚Ä‚­‚¾‚³‚¢B"
+echo "Azureã‚¢ã‚«ã‚¦ãƒ³ãƒˆã¸ã®ãƒ­ã‚°ã‚¤ãƒ³ã«å¤±æ•—ã—ã¾ã—ãŸã€‚å…¥åŠ›å€¤ã‚’ç¢ºèªã—ã¦ãã ã•ã„ã€‚"
 echo %ERRORLEVEL%
 pause
 exit
 )
-echo "AzureƒAƒJƒEƒ“ƒg‚Ö‚ÌƒƒOƒCƒ“‚É¬Œ÷‚µ‚Ü‚µ‚½B"
+echo "Azureã‚¢ã‚«ã‚¦ãƒ³ãƒˆã¸ã®ãƒ­ã‚°ã‚¤ãƒ³ã«æˆåŠŸã—ã¾ã—ãŸã€‚"
 echo %ERRORLEVEL%
 
-echo "ƒAƒbƒvƒ[ƒh‚Ì‚½‚ß‚Ìî•ñ‚ð“ü—Í‚µ‚Ä‚­‚¾‚³‚¢"
+echo "ã‚¢ãƒƒãƒ—ãƒ­ãƒ¼ãƒ‰ã®ãŸã‚ã®æƒ…å ±ã‚’å…¥åŠ›ã—ã¦ãã ã•ã„"
 PowerShell -File %~dp0\DevicePicUpload.ps1 >> %BAT_LOG%
-::powershell -command %~dp0\DevicePicUpload.ps1;exit $LASTEXITCODE >> %BAT_LOG%
+::powershell -command %~dp0\FileUpload.ps1;exit $LASTEXITCODE >> %BAT_LOG%
 @IF %ERRORLEVEL% NEQ 0 (
-echo "ƒAƒbƒvƒ[ƒh‚ÉŽ¸”s‚µ‚Ü‚µ‚½B“ü—Í’l‚ðŠm”F‚µ‚Ä‚­‚¾‚³‚¢B"
+echo "ã‚¢ãƒƒãƒ—ãƒ­ãƒ¼ãƒ‰ã«å¤±æ•—ã—ã¾ã—ãŸã€‚å…¥åŠ›å€¤ã‚’ç¢ºèªã—ã¦ãã ã•ã„ã€‚"
 echo %ERRORLEVEL%
 pause
 exit
 )
-echo "ƒAƒbƒvƒ[ƒh‚É¬Œ÷‚µ‚Ü‚µ‚½B"
+echo "ã‚¢ãƒƒãƒ—ãƒ­ãƒ¼ãƒ‰ã«æˆåŠŸã—ã¾ã—ãŸã€‚"
 echo %ERRORLEVEL%
 pause
 
