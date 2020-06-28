@@ -1,5 +1,5 @@
-$username = Read-Host "AzureƒAƒJƒEƒ“ƒg"
-$password = Read-Host "ƒpƒXƒ[ƒh" -AsSecureString
+$username = Read-Host "Azureã‚¢ã‚«ã‚¦ãƒ³ãƒˆ"
+$password = Read-Host "ãƒ‘ã‚¹ãƒ¯ãƒ¼ãƒ‰" -AsSecureString
 
 az login -u $username -p $password
 if (!$?) {
