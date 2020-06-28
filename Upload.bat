@@ -21,7 +21,6 @@ SET BAT_LOG=%~dp0\%id%_スクリプト実行結果.txt
 
 echo "Azureへのログイン情報を入力してください"
 PowerShell -File %~dp0\login.ps1 >> %BAT_LOG%
-::powershell -command %~dp0\login.ps1;exit $LASTEXITCODE >> %BAT_LOG%
 @IF %ERRORLEVEL% NEQ 0 (
 echo "Azureアカウントへのログインに失敗しました。入力値を確認してください。"
 echo %ERRORLEVEL%
@@ -33,7 +32,6 @@ echo %ERRORLEVEL%
 
 echo "アップロードのための情報を入力してください"
 PowerShell -File %~dp0\FileUpload.ps1 >> %BAT_LOG%
-::powershell -command %~dp0\DevicePicUpload.ps1;exit $LASTEXITCODE >> %BAT_LOG%
 @IF %ERRORLEVEL% NEQ 0 (
 echo "アップロードに失敗しました。入力値を確認してください。"
 echo %ERRORLEVEL%
